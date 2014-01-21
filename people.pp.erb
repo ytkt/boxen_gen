@@ -1,0 +1,10 @@
+class people::<%= username %>
+  <% matched_list.each do |app| %>
+  include <%= app %><% end %>
+
+  package {
+    [<% brew_list.each do |app| %>
+      '<%= app %>',<% end %>
+    ]:
+  }
+end

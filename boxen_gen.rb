@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'erb'
 
 def repolist
   doc = Nokogiri::HTML( open('https://github.com/boxen') )
@@ -31,4 +32,18 @@ def matched_list
   return matched
 end
 
-p matched_list
+def brew_list
+  list = `brew list`.split("\n")
+end
+
+print 'username: '
+username = STDIN.gets.gsub("\n", "")
+
+template = File.read("people.pp.erb", :encoding => Encoding::UTF_8)
+erb = ERB.new(template)
+File.open("#{username}.pp", "w") do |output|
+  output.write erb.result(binding)
+end
+
+#matched_list
+#brew_list
