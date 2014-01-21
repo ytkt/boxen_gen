@@ -41,7 +41,7 @@ username = STDIN.gets.gsub("\n", "")
 
 template = File.read("people.pp.erb", :encoding => Encoding::UTF_8)
 erb = ERB.new(template)
-File.open("#{username}.pp", "w") do |output|
+File.open("result/#{username}.pp", "w") do |output|
   output.write erb.result(binding)
 end
 

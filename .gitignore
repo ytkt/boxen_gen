@@ -50,3 +50,8 @@ tmp
 .yardoc
 _yardoc
 doc/
+
+
+# original
+result/*
+!result/.gitkeep
