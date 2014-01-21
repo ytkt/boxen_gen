@@ -1,6 +1,9 @@
 require 'open-uri'
+require 'openssl'
 require 'nokogiri'
 require 'erb'
+
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 def repolist
   doc = Nokogiri::HTML( open('https://github.com/boxen') )
